@@ -71,3 +71,7 @@ EOF
 # Elite
 
 # Empire
+cat << EOF
+git clone https://github.com/EmpireProject/Empire.git
+sudo ./setup/install.sh
+EOF
