@@ -19,14 +19,14 @@ fi
 }
 
 grab(){
-   FILENAME=echo $2 | rev | cut -d '/' -f 1 | rev
+   FILENAME=$(echo $2 | rev | cut -d '/' -f 1 | rev)
    wget -q $2 -O "$1/$FILENAME"
    verify_file "$1/$FILENAME"
 }
 
 # recon
 printf "\n[Recon]\n"
-mkdir recon
+mkdir -p recon
 
 if ! command -v gobuster > /dev/null
 then  
@@ -40,7 +40,7 @@ grab recon https://raw.githubusercontent.com/atstpls/silverback/master/scanTarge
 
 # privesc
 printf "\n[PrivEsc]\n"
-mkdir privesc
+mkdir -p privesc
 grab privesc https://github.com/pentestmonkey/windows-privesc-check/raw/master/windows-privesc-check2.exe
 grab privesc https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/privesc/PowerUp.ps
 grab privesc https://raw.githubusercontent.com/sleventyeleven/linuxprivchecker/master/linuxprivchecker.py
@@ -49,6 +49,7 @@ grab privesc https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/mast
 
 # Post-Exploitation
 printf "\n[PostExp]\n"
+mkdir -p postexp
 cat << EOF
 PoshC2:     curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
 Empire:      git clone https://github.com/EmpireProject/Empire.git && sudo ./setup/install.sh
