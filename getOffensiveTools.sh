@@ -18,8 +18,16 @@ else
 fi
 }
 
-# enumeration 
-printf "\n[Enumeration]\n"
+grab(){
+   FILENAME=echo $2 | rev | cut -d '/' -f 1 | rev
+   wget -q $2 -O $1/$FILENAME
+   verify_file $1/$FILENAME
+}
+
+# recon
+printf "\n[Recon]\n"
+mkdir recon
+
 if ! command -v gobuster > /dev/null
 then  
     apt -qq install gobuster -y 
@@ -28,22 +36,16 @@ else
     verify_command gobuster
 fi
 
+grab recon https://raw.githubusercontent.com/atstpls/silverback/master/scanTarget.sh
+
 # privesc
 printf "\n[PrivEsc]\n"
-wget -q https://github.com/pentestmonkey/windows-privesc-check/raw/master/windows-privesc-check2.exe -O wpc2.exe
-verify_file wpc2.exe
-
-wget -q https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/privesc/PowerUp.ps1
-verify_file PowerUp.ps1
-
-wget -q https://raw.githubusercontent.com/sleventyeleven/linuxprivchecker/master/linuxprivchecker.py
-verify_file linuxprivchecker.py
-
-wget -q https://raw.githubusercontent.com/rasta-mouse/Sherlock/master/Sherlock.ps1
-verify_file Sherlock.ps1
-
-wget -q https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/windows-exploit-suggester.py
-verify_file windows-exploit-suggester.py
+mkdir privesc
+grab privesc https://github.com/pentestmonkey/windows-privesc-check/raw/master/windows-privesc-check2.exe
+grab privesc https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/privesc/PowerUp.ps
+grab privesc https://raw.githubusercontent.com/sleventyeleven/linuxprivchecker/master/linuxprivchecker.py
+grab privesc https://raw.githubusercontent.com/rasta-mouse/Sherlock/master/Sherlock.ps1
+grab privesc https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/windows-exploit-suggester.py
 
 # Post-Exploitation
 printf "\n[PostExp]\n"
