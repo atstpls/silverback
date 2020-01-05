@@ -22,11 +22,8 @@ fi
 
 
 # enumeration 
-if verify_command gobuster
-then break 
-else
-  apt -qq install gobuster -y
-  verify_command gobuster
+if ! command -v gobuster > /dev/null
+then  apt -qq install gobuster -y && verify_command gobuster
 fi
 
 # privesc
