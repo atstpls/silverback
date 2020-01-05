@@ -47,9 +47,9 @@ verify_file windows-exploit-suggester.py
 # Covenant
 
 # PoshC2
-echo "To install PoshC2:    curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash"
-
 cat << EOF
+To install PoshC2:    curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
+then:
 - Edit the config file by running posh-config --nano 
 - Run the server using posh-server
 - Others can view the log using posh-log
