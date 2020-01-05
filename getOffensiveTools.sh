@@ -6,17 +6,17 @@ then
 	echo "- $1 not installed"
 	exit
 else 
-  echo " + $1 installed" 
+  echo " + $1" 
 fi
 }
 
 verify_file(){
 if ! file $1 > /dev/null 
 then
-	echo "- $1 not installed"
+	echo "- $1 not downloaded"
 	exit
 else 
-  echo " + $1 installed" 
+  echo " + $1" 
 fi
 }
 
