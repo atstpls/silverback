@@ -20,8 +20,8 @@ fi
 
 grab(){
    FILENAME=echo $2 | rev | cut -d '/' -f 1 | rev
-   wget -q $2 -O $1/$FILENAME
-   verify_file $1/$FILENAME
+   wget -q $2 -O "$1/$FILENAME"
+   verify_file "$1/$FILENAME"
 }
 
 # recon
