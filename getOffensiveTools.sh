@@ -22,11 +22,14 @@ fi
 
 
 # enumeration 
+echo \n[Enumeration]
 if ! command -v gobuster > /dev/null
-then  apt -qq install gobuster -y && verify_command gobuster
+then  apt -qq install gobuster -y 
+verify_command gobuster
 fi
 
 # privesc
+echo \n[PrivEsc]
 wget -q https://github.com/pentestmonkey/windows-privesc-check/raw/master/windows-privesc-check2.exe -O wpc2.exe
 verify_file wpc2.exe
 
@@ -42,36 +45,9 @@ verify_file Sherlock.ps1
 wget -q https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/windows-exploit-suggester.py
 verify_file windows-exploit-suggester.py
 
-# shells
-
-# Covenant
-
-# PoshC2
+# Post-Exploitation
+echo \n[PostExp]
 cat << EOF
-To install PoshC2:    curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
-then:
-- Edit the config file by running posh-config --nano 
-- Run the server using posh-server
-- Others can view the log using posh-log
-- Interact with the implants using the handler, run by using posh
-EOF
-
-# CrackMapExec 
-cat << EOF
-For Ubuntu:
-  apt-get install -y libssl-dev libffi-dev python-dev build-essential
-  pip install crackmapexec
-
-For Kali:
-  apt-get install crackmapexec
-EOF
-
-
-
-# Elite
-
-# Empire
-cat << EOF
-git clone https://github.com/EmpireProject/Empire.git
-sudo ./setup/install.sh
+PoshC2:     curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
+Empire:      git clone https://github.com/EmpireProject/Empire.git && sudo ./setup/install.sh
 EOF
