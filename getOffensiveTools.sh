@@ -16,3 +16,8 @@ echo "> Getting PowerUp.ps1..."
 wget https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/privesc/PowerUp.ps1
 if (file PowerUp.ps1 1>/dev/null)
 then echo "+ PowerUp.ps1 downloaded"
+
+
+# linuxprivchecker.py
+# Sherlock.ps1 
+# windows-exploit-suggester.py 
