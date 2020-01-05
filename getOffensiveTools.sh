@@ -43,3 +43,31 @@ wget -q https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/wi
 verify_file windows-exploit-suggester.py
 
 # shells
+
+# Covenant
+
+# PoshC2
+echo "To install PoshC2:    curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash"
+
+cat << EOF
+- Edit the config file by running posh-config --nano 
+- Run the server using posh-server
+- Others can view the log using posh-log
+- Interact with the implants using the handler, run by using posh
+EOF
+
+# CrackMapExec 
+cat << EOF
+For Ubuntu:
+  apt-get install -y libssl-dev libffi-dev python-dev build-essential
+  pip install crackmapexec
+
+For Kali:
+  apt-get install crackmapexec
+EOF
+
+
+
+# Elite
+
+# Empire
