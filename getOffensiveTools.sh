@@ -22,7 +22,7 @@ fi
 
 
 # enumeration 
-apt install gobuster -y
+apt -qq install gobuster -y
 verify_command Gobuster
 
 # privesc
