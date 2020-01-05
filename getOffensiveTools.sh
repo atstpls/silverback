@@ -37,6 +37,7 @@ else
 fi
 
 grab recon https://raw.githubusercontent.com/atstpls/silverback/master/scanTarget.sh
+chmod +x recon/scanTarget.sh
 
 # privesc
 printf "\n[PrivEsc]\n"
