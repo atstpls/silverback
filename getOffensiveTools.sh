@@ -26,19 +26,19 @@ apt install gobuster -y
 verify Gobuster
 
 # privesc
-wget https://github.com/pentestmonkey/windows-privesc-check/raw/master/windows-privesc-check2.exe -O wpc2.exe
+wget -q https://github.com/pentestmonkey/windows-privesc-check/raw/master/windows-privesc-check2.exe -O wpc2.exe
 verify_file wpc2.exe
 
-wget https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/privesc/PowerUp.ps1
+wget -q https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/privesc/PowerUp.ps1
 verify_file PowerUp.ps1
 
-wget https://raw.githubusercontent.com/sleventyeleven/linuxprivchecker/master/linuxprivchecker.py
+wget -q https://raw.githubusercontent.com/sleventyeleven/linuxprivchecker/master/linuxprivchecker.py
 verify_file linuxprivchecker.py
 
-wget https://raw.githubusercontent.com/rasta-mouse/Sherlock/master/Sherlock.ps1
+wget -q https://raw.githubusercontent.com/rasta-mouse/Sherlock/master/Sherlock.ps1
 verify_file Sherlock.ps1
 
-wget https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/windows-exploit-suggester.py
+wget -q https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/windows-exploit-suggester.py
 verify_file windows-exploit-suggester.py
 
 # shells
