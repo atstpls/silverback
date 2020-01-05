@@ -19,15 +19,17 @@ fi
 }
 
 # enumeration 
-printf "\n[Enumeration]"
+printf "\n[Enumeration]\n"
 if ! command -v gobuster > /dev/null
 then  
     apt -qq install gobuster -y 
-verify_command gobuster
+    verify_command gobuster
+else
+    verify_command gobuster
 fi
 
 # privesc
-printf "\n[PrivEsc]"
+printf "\n[PrivEsc]\n"
 wget -q https://github.com/pentestmonkey/windows-privesc-check/raw/master/windows-privesc-check2.exe -O wpc2.exe
 verify_file wpc2.exe
 
@@ -44,7 +46,7 @@ wget -q https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/wi
 verify_file windows-exploit-suggester.py
 
 # Post-Exploitation
-printf "\n[PostExp]"
+printf "\n[PostExp]\n"
 cat << EOF
 PoshC2:     curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
 Empire:      git clone https://github.com/EmpireProject/Empire.git && sudo ./setup/install.sh
