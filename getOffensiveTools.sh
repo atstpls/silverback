@@ -23,7 +23,7 @@ fi
 
 # enumeration 
 apt install gobuster -y
-verify Gobuster
+verify_command Gobuster
 
 # privesc
 wget -q https://github.com/pentestmonkey/windows-privesc-check/raw/master/windows-privesc-check2.exe -O wpc2.exe
