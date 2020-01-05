@@ -21,3 +21,8 @@ then echo "+ PowerUp.ps1 downloaded"
 # linuxprivchecker.py
 # Sherlock.ps1 
 # windows-exploit-suggester.py 
+
+# shells
+# nc.exe 
+# webshell.aspx  
+# wshell.war
