@@ -42,11 +42,28 @@ chmod +x recon/scanTarget.sh
 # privesc
 printf "\n[PrivEsc]\n"
 mkdir -p privesc
+
 grab privesc https://github.com/pentestmonkey/windows-privesc-check/raw/master/windows-privesc-check2.exe
-grab privesc https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/privesc/PowerUp.ps
+# windows-privesc-check2.exe --audit -a -o report
+
+grab privesc https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/privesc/PowerUp.ps1
+# Invoke-AllChecks
+
 grab privesc https://raw.githubusercontent.com/sleventyeleven/linuxprivchecker/master/linuxprivchecker.py
+# python linuxprivchecker.py
+
 grab privesc https://raw.githubusercontent.com/rasta-mouse/Sherlock/master/Sherlock.ps1
+# Find-AllVulns
+
 grab privesc https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/windows-exploit-suggester.py
+# python windows-exploit-suggester.py -u
+# python windows-exploit-suggester.py -d <xls> -i systeminfo.txt
+
+# https://github.com/GhostPack/SharpUp
+# SharpUp.exe
+
+# https://github.com/rasta-mouse/Watson
+# Watson.exe
 
 # Post-Exploitation
 printf "\n[PostExp]\n"
@@ -55,3 +72,14 @@ cat << EOF
 PoshC2:     curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
 Empire:      git clone https://github.com/EmpireProject/Empire.git && sudo ./setup/install.sh
 EOF
+
+
+printf "Metasploit modules\t\tuse post/multi/recon/local_exploit_suggester\n"
+printf "Windows Privesc Check\t\twindows-privesc-check2.exe --audit -a -o report\n"
+printf "PowerUp\t\t\t\tInvoke-AllChecks\n"
+printf "SharpUp\t\t\t\tSharpUp.exe\n"
+printf "Sherlock\t\t\tFind-AllVulns\n"
+printf "Watson\t\t\t\tWatson.exe\n"
+printf "linuxprivchecker.py\t\tpython linuxprivchecker.py\n"
+printf "windows-exploit-suggester.py\tpython windows-exploit-suggester.py -u\n"
+printf "\t\t\t\tpython windows-exploit-suggester.py -d <xls> -i systeminfo.txt\n"
