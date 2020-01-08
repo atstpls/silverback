@@ -76,8 +76,15 @@ cat << EOF
 PoshC2:     curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
 Empire:      git clone https://github.com/EmpireProject/Empire.git && sudo ./setup/install.sh
 EOF
-
-
+Pupy:
+    git clone --recursive https://github.com/n1nj4sec/pupy
+    cd pupy
+    pip2.7 install --upgrade pip
+    pip2.7 install virtualenv
+    ./create-workspace.py pupyws
+    export PATH=$PATH:~/.local/bin; pupysh
+    pupyws/bin/pupysh
+    
 printf "Metasploit modules\t\tuse post/multi/recon/local_exploit_suggester\n"
 printf "Windows Privesc Check\t\twindows-privesc-check2.exe --audit -a -o report\n"
 printf "PowerUp\t\t\t\tInvoke-AllChecks\n"
