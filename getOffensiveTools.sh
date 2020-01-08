@@ -39,6 +39,10 @@ fi
 grab recon https://raw.githubusercontent.com/atstpls/silverback/master/scanTarget.sh
 chmod +x recon/scanTarget.sh
 
+grab recon https://raw.githubusercontent.com/maurosoria/dirsearch/master/dirsearch.py
+chmod +x recon/dirsearch.py 
+
+
 # privesc
 printf "\n[PrivEsc]\n"
 mkdir -p privesc
