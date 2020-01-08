@@ -59,6 +59,9 @@ grab privesc https://raw.githubusercontent.com/sleventyeleven/linuxprivchecker/m
 grab privesc https://raw.githubusercontent.com/rasta-mouse/Sherlock/master/Sherlock.ps1
 # Find-AllVulns
 
+grab privesc https://raw.githubusercontent.com/atstpls/silverback/master/showOneLiners.sh
+chmod +x privesc/showOneLiners.sh
+
 grab privesc https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/windows-exploit-suggester.py
 # python windows-exploit-suggester.py -u
 # python windows-exploit-suggester.py -d <xls> -i systeminfo.txt
