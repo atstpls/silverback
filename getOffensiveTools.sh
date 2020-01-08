@@ -39,8 +39,9 @@ fi
 grab recon https://raw.githubusercontent.com/atstpls/silverback/master/scanTarget.sh
 chmod +x recon/scanTarget.sh
 
-grab recon https://raw.githubusercontent.com/maurosoria/dirsearch/master/dirsearch.py
-chmod +x recon/dirsearch.py 
+cd recon 
+git clone https://github.com/maurosoria/dirsearch.git
+ln -s $(pwd)/dirsearch/dirsearch.py /usr/local/bin/dirsearch.py
 
 
 # privesc
