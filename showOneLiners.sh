@@ -1,6 +1,9 @@
 #!/bin/bash 
 
 printf "\n"
+printf "cewl -d 2 -m 5 -w words.txt http://$1 2>/dev/null;john --wordlist=words.txt --rules:Tuned --stdout > mangled_words.txt"
+printf "\n\n"
+
 printf "python -c 'import pty; pty.spawn(\"/bin/bash\")'"
 printf "\n\n"
 
