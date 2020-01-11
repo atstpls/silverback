@@ -7,6 +7,9 @@ printf "\n\n"
 printf "dirb http://$1"
 printf "\n\n"
 
+printf "apt update && apt install -y virtualbox-guest-x11"
+printf "\n\n"
+
 cat << EOF 
 skipfish -YO -o ~/skipfish http://$1
 EOF
