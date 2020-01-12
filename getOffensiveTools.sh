@@ -75,7 +75,11 @@ grab privesc https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/mast
 
 # Post-Exploitation
 printf "\n[PostExp]\n"
+
 mkdir -p postexp
+
+grab postexp https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1
+
 cat << EOF
 PoshC2:     curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
 Empire:      git clone https://github.com/EmpireProject/Empire.git && sudo ./setup/install.sh
