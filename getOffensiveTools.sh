@@ -54,6 +54,9 @@ grab privesc https://github.com/pentestmonkey/windows-privesc-check/raw/master/w
 grab privesc https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/privesc/PowerUp.ps1
 # Invoke-AllChecks
 
+grab privesc https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+chmod +x LinEnum.sh
+
 grab privesc https://raw.githubusercontent.com/sleventyeleven/linuxprivchecker/master/linuxprivchecker.py
 # python linuxprivchecker.py
 
