@@ -95,6 +95,7 @@ EOF
 cat << EOF
 PoshC2:     curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
 Empire:      git clone https://github.com/EmpireProject/Empire.git && sudo ./setup/install.sh
+EvilWinRm:  gem install evil-winrm
 EOF
 Pupy:
     git clone --recursive https://github.com/n1nj4sec/pupy
