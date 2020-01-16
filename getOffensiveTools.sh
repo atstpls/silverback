@@ -83,6 +83,15 @@ mkdir -p postexp
 grab postexp https://raw.githubusercontent.com/samratashok/nishang/master/Antak-WebShell/antak.aspx
 grab postexp https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1
 
+
+cat << EOF
+FOR SILENT TRINITY
+git clone https://github.com/byt3bl33d3r/SILENTTRINITY && cd SILENTTRINITY
+pip3 install --user pipenv && pipenv install && pipenv shell
+python st.py
+EOF
+
+
 cat << EOF
 PoshC2:     curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
 Empire:      git clone https://github.com/EmpireProject/Empire.git && sudo ./setup/install.sh
