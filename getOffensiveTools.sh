@@ -82,7 +82,7 @@ printf "\n[PostExp]\n"
 mkdir -p postexp
 grab postexp https://raw.githubusercontent.com/samratashok/nishang/master/Antak-WebShell/antak.aspx
 grab postexp https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1
-
+grab postexp https://download.sysinternals.com/files/Procdump.zip
 
 cat << EOF
 FOR SILENT TRINITY
