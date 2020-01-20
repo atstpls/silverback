@@ -88,11 +88,22 @@ cat << EOF
 FOR SILENT TRINITY
 git clone https://github.com/byt3bl33d3r/SILENTTRINITY && cd SILENTTRINITY
 pip3 install --user pipenv && pipenv install && pipenv shell
-python st.py
+pip3 install -r requirements.txt
+python3 st.py teamserver 127.0.0.1 password
+Client:
+python3 st.py client wss://neo:password@127.0.0.1:5000
+
+KOADIC
+git clone https://github.com/zerosum0x0/koadic.git && cd koadic
+pip3 install -r requirements.txt
+./koadic
 EOF
 
 
 cat << EOF
+Cobalt Strike:
+   apt-get install openjdk-11-jdk
+   update-java-alternatives -s java-1.11.0-openjdk-amd64
 PoshC2:     curl -sSL https://raw.githubusercontent.com/nettitude/PoshC2/master/Install.sh | bash
 Empire:      git clone https://github.com/EmpireProject/Empire.git && sudo ./setup/install.sh
 EvilWinRm:  gem install evil-winrm
