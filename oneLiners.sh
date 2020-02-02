@@ -4,7 +4,7 @@ printf "\n"
 
 function showHelp {
     printf "\n"
-    printf "Usage:   showOneLiners.sh 10.10.14.53 8000 python file.exe\n"
+    printf "Usage:   oneLiners.sh 10.10.14.53 8000 python file.exe\n"
 }
 
 function python {
