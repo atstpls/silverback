@@ -1,50 +1,27 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
-
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
 ####################################################
-####################################################
-####################################################
-####################################################
+################ Settings ##########################
 ####################################################
 
 
 # PS1="\[\033[32m\](\[\033[37m\]\u: \[\033[90m\]\w\[\033[32m\])\$\[\033[37m\] "
+
+# PS1="\[\033[32m\](\[\033[33m\]\u: \[\033[90m\]\w\[\033[32m\])\$\[\033[37m\] "
+
 PS1="\[\033[37m\]\[\033[90m\]\w\[\033[32m\]>\[\033[37m\] "
 
 ####################################################
-####################################################
+########### Environment Variables ##################
 ####################################################
 
-export TOOLS=$HOME/tools
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-export PATH=$PATH:$HOME/scripts/Python:$HOME/scripts/Bash
+export PATH=$PATH:$HOME/scripts/python:$HOME/scripts/bash
+export DISPLAY=:0
+export TOOLS=$HOME/tools
 
+####################################################
+################### Aliases ########################
+####################################################
 
 alias sshp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no '
 alias scpp='scp -o PreferredAuthentications=password -o PubkeyAuthentication=no '
@@ -52,18 +29,17 @@ alias python="python3"
 alias firefox="firefox --new-window --private-window"
 alias urldecode='python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))"'
 alias urlencode='python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))"'
-
-export DISPLAY=:0
+alias yara='docker run -it --rm -v $HOME/tools/rules:/rules:ro -v $(pwd):/malware:ro blacktop/yara $@'
 
 ####################################################
-####################################################
+################## Functions #######################
 ####################################################
 
-hgrep () {
+hgrep() {
     history | egrep --color=auto --recursive "$@" | egrep --color=auto --recursive -v "hgrep $@"
 }
 
-getCert () {
+getCert() {
     timeout 3 openssl s_client -showcerts -servername $1 -connect $1:443 <<< "Q" 2> /dev/null | openssl x509 -text -noout | grep DNS | tr ',' '\n' | cut -d ':' -f 2 | sort -fu
 }
 
@@ -87,11 +63,9 @@ CleanGitRepoHistory() {
 }
 
 getResponses() {
-  
   [ ! -d headers ] && mkdir headers
   [ ! -d responsebody ] && mkdir responsebody
   CURRENT_PATH=$(pwd)
-  
   for x in $(cat $1)
   do
     NAME=$(echo $x | awk -F/ '{print $3}')
@@ -134,4 +108,30 @@ showme(){
   else
     cat $1/$2
   fi
+}
+
+python2() {
+
+# is first arg empty?
+if [ $1 ];then
+  CMD="docker run -it --rm -v $(pwd):/root frolvlad/alpine-python2"
+
+  # is second arg empty?
+  if [ -z $2 ];then
+    FILE="$1"
+    $CMD /root/$FILE
+  fi
+
+  # is second arg there?
+  if [ $2 ];then
+    FILE="$1"
+    shift
+    MODS="$@"
+    $CMD ash -c "pip install $MODS;python /root/$FILE"
+  fi
+
+else
+  echo "No argument supplied"
+fi
+
 }
